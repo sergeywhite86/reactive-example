@@ -1,0 +1,31 @@
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/userdb
+    username: user
+    password: pass
+
+  # Liquibase (JDBC) ? ???? ????????? ?????????, ????? ??????? ? R2DBC
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    url: jdbc:postgresql://postgres:5432/userdb
+    user: user
+    password: pass
+    default-schema: public
+
+  # ????????? datasource ??? Liquibase
+  datasource:
+    url: jdbc:postgresql://postgres:5432/userdb
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+  webflux:
+    base-path: /api
+
+logging:
+  level:
+    root: INFO
+    liquibase: DEBUG
+    org.springframework.boot.autoconfigure.liquibase: DEBUG
+    org.liquibase: DEBUG
